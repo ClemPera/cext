@@ -37,7 +37,7 @@ pub fn all_order_permutations<T: Clone>(elements: Vec<T>) -> Vec<Vec<T>> {
             let mut remaining = elements.clone();
             remaining.remove(i);
 
-            all_order_permutation(remaining)
+            all_order_permutations(remaining)
                 .into_iter()
                 .map(move |mut perm| {
                     perm.insert(0, elem.clone());
@@ -70,7 +70,7 @@ fn cartesian_product_test() {
 
 #[test]
 fn all_order_permutation_test() {
-    let result = all_order_permutation(vec![1, 2, 3, 4]);
+    let result = all_order_permutations(vec![1, 2, 3, 4]);
     assert_eq!(result.len(), 24);
 
     assert!(result.contains(&vec![1, 2, 3, 4]));
